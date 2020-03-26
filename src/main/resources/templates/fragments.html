@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<body lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:fragment ="head">
+    <meta charset="UTF-8"/>
+    <title>Tap In</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
+
+</head>
+<body>
+
+<header th:fragment="header">
+    <h1 th:text="${title}">Tap In</h1>
+    <img  src="https://i.imgur.com/kbaePvK.png">
+    <ul class="nav justify-content-end">
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register">Get Started</a></li>
+        <li class="nav-item"><a class="nav-link" href="/login">Sign In</a></li>
+    </ul>
+    <hr>
+</header>
+<p th:fragment="bodyFiller">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quis facilisis diam. Morbi mattis sed lacus sollicitudin luctus.
+    Duis iaculis viverra purus quis tincidunt. Pellentesque nec faucibus mauris. Donec feugiat elementum dapibus.
+    In posuere vitae ipsum convallis finibus. Pellentesque eros nunc, rutrum semper euismod ut, finibus non tellus.
+    Nullam enim justo, molestie eu ligula ac, sodales laoreet ante.
+    Nam fermentum purus vitae odio lacinia, a ultricies purus scelerisque.
+    Phasellus sit amet ornare urna. Vestibulum pharetra mollis neque vel accumsan.
+    Aenean facilisis nibh sed ligula feugiat maximus. Duis mattis mi id metus efficitur consequat.
+    Integer a efficitur odio, vitae vehicula mi. Praesent auctor, risus non pulvinar pellentesque, sapien mi tempor sem, in suscipit neque sem eget neque.
+    Duis ut orci enim. Ut euismod tellus felis, nec lacinia purus facilisis sed. Vestibulum ut aliquet sapien.
+    Sed sit amet semper lorem. Donec semper magna felis, ac tristique orci fermentum sed.
+    Donec vel magna ac sapien rutrum blandit ac sed purus. Pellentesque faucibus in elit ut imperdiet.
+</p>
+
+</body>
+</html>
