@@ -3,30 +3,30 @@ package org.launchcode.tapIn.models;
 import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import java.time.LocalDate;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Tap extends AbstractEntity {
 
-    @NotNull
-    private LocalDate date;
+    @NotBlank(message = "Date is required")
+    private String date;
 
     @ManyToOne
     @NotNull
     private Goal goal;
 
-    public Tap(LocalDate date, Goal goals) {
-        this.date = LocalDate.now();
+    public Tap(String date, Goal goals) {
+        this.date = date;
         this.goal = goal;
     }
 
     public Tap() { }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

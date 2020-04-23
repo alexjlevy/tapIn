@@ -3,17 +3,29 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
+<div th:if="${!goals.isEmpty()}">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Goals</th>
+                <th>Score</th>
+                <th>Sort</th>
+                <th>Remove</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+            <tr th:each="goal : ${goals}">
+                <td th:text="${goal.name} + ${goal.score}"></td>
+                <td>10</td>
+            </tr>
+    </table>
+    <div class = "container jumbotron text-center">
+        <h1><a href = "/goals/create">Create more goals!</a></h1>
+    </div>
+</div>
+<div th:unless ="${!goals.isEmpty()}" class ="container jumbotron text-center">
+    <h1><a href="/goals/create">Create some goals!</a></h1>
+</div>
 
-<table class="table table-hover">
-    <thead>
-    <tr>
-        <th>Goals</th>
-    </tr>
-    </thead>
-    <tr th:each="goal : ${goals}">
-        <td><a th:text="${goal.name}"</td>
-    </tr>
-
-</table>
 </body>
 </html>

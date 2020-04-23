@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import javax.validation.Valid;
 
 
@@ -34,14 +33,11 @@ public class GoalsController {
     }
 
     @PostMapping("create")
-    public String processGoalForm (@Valid @ModelAttribute Goal goal,
+    public String processGoalForm (@ModelAttribute @Valid Goal goal,
                                                  Errors errors, Model model) {
-
         if (errors.hasErrors()) {
-            model.addAttribute(new Goal());
             return "goals/create";
         }
-
         goalsRepository.save(goal);
         return "redirect:";
     }

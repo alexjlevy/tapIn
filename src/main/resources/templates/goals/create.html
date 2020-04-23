@@ -10,7 +10,7 @@
         <label>Name
             <input th:field="${goal.name}" class="form-control">
         </label>
-        <span th:errors="${goal.name}" class="error"></span>
+        <p class="error" th:errors="${goal.name}"></p>
     </div>
     <input type="submit" value="Create" class="btn btn-primary">
 </form>
