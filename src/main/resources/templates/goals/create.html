@@ -12,6 +12,12 @@
         </label>
         <p class="error" th:errors="${goal.name}"></p>
     </div>
+    <div class="form-group">
+        <label>Current Score (1-10)
+            <input th:field="${goal.score}" class="form-control">
+        </label>
+        <p class="error" th:errors="${goal.score}"></p>
+    </div>
     <input type="submit" value="Create" class="btn btn-primary">
 </form>
 

@@ -16,14 +16,14 @@ public class Goal extends AbstractEntity{
     @Size(min = 3, max = 100, message = "Goal must be at least 3 characters long")
     private String name;
 
-    @Max(5)
+    @Max(10)
     @Min(1)
     private Integer score;
 
     @OneToMany(mappedBy = "goal")
     private final List<Tap> goals = new ArrayList<>();
 
-    public Goal(@Size(min = 3, message = "Goal must be at least 3 characters long") String name, @Max(5) @Min(1) Integer score) {
+    public Goal(@Size(min = 3, message = "Goal must be at least 3 characters long") String name, @Max(10) @Min(1) Integer score) {
         this.name = name;
         this.score = score;
     }

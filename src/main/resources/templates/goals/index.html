@@ -9,14 +9,12 @@
             <tr>
                 <th>Goals</th>
                 <th>Score</th>
-                <th>Sort</th>
                 <th>Remove</th>
-                <th>Date Added</th>
             </tr>
         </thead>
             <tr th:each="goal : ${goals}">
-                <td th:text="${goal.name} + ${goal.score}"></td>
-                <td>10</td>
+                <td th:text="${goal.name}"></td>
+                <td th:text="${goal.score}"></td>
             </tr>
     </table>
     <div class = "container jumbotron text-center">

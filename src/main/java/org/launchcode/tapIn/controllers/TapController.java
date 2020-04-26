@@ -34,12 +34,13 @@ public class TapController {
     @GetMapping("create")
     public String createTapForm (Model model) {
         model.addAttribute(new Tap());
+        model.addAttribute(new Goal());
         model.addAttribute("goals", goalsRepository.findAll());
         return "tapIn/create";
     }
 
     @PostMapping("create")
-    public String processTapForm (@ModelAttribute @Valid Tap tap,
+    public String processTapForm (@ModelAttribute @Valid Tap tap, Goal goal,
                                             Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "tapIn/create";
