@@ -8,17 +8,19 @@
         <thead>
             <tr>
                 <th>Goals</th>
-                <th>Score</th>
-                <th>Remove</th>
+                <th>Initial Score</th>
+                <th>Date Added</th>
             </tr>
         </thead>
             <tr th:each="goal : ${goals}">
-                <td th:text="${goal.name}"></td>
-                <td th:text="${goal.score}"></td>
+                <td><a th:text="${goal.name}" th:href="'/goals/tapIn?goalId=' + ${goal.id}"></a></td>
+                <td th:text="${goal.scoreStart}"></td>
+                <td th:text="${goal.date}"></td>
             </tr>
     </table>
     <div class = "container jumbotron text-center">
-        <h1><a href = "/goals/create">Create more goals!</a></h1>
+        <h1><a href = "/goals/create">Create more goals</a></h1>
+        <h1><a href = "/goals/delete">Delete old goals</a></h1>
     </div>
 </div>
 <div th:unless ="${!goals.isEmpty()}" class ="container jumbotron text-center">

@@ -7,6 +7,12 @@
 
 <form method="post">
     <div class="form-group">
+        <label>Starting Date:
+            <input type = "date" th:field="${goal.date}" class="form-control">
+        </label>
+        <p class="error" th:errors="${goal.date}"></p>
+    </div>
+    <div class="form-group">
         <label>Name
             <input th:field="${goal.name}" class="form-control">
         </label>
@@ -14,9 +20,9 @@
     </div>
     <div class="form-group">
         <label>Current Score (1-10)
-            <input th:field="${goal.score}" class="form-control">
+            <input type = "number" th:field="${goal.scoreStart}" class="form-control">
         </label>
-        <p class="error" th:errors="${goal.score}"></p>
+        <p class="error" th:errors="${goal.scoreStart}"></p>
     </div>
     <input type="submit" value="Create" class="btn btn-primary">
 </form>

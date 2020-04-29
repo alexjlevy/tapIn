@@ -28,6 +28,7 @@ public class TapController {
     @GetMapping
     public String displayAllTaps (Model model) {
         model.addAttribute("goals", goalsRepository.findAll());
+        model.addAttribute("taps", tapRepository.findAll());
         return "tapIn/index";
     }
 
