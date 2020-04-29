@@ -6,14 +6,20 @@
 <header th:replace="fragments :: header"></header>
 
 <form method="post">
-    <input type="hidden" th:field="${goal.id}">
+    <input type="hidden" th:field="${tapGoal.goal}">
     <div class="form-group">
-        <label>Today's Tap In:
-            <input type="number" th:field="${goal.tap}" class="form-control">
+        <label>Date:
+            <input type = "date" th:field="${tapGoal.tap.date}" class="form-control">
         </label>
-        <p class="error" th:errors="${goal.tap}"></p>
+        <p class="error" th:errors="${tapGoal.tap.date}"></p>
     </div>
-    <input type="submit" value="Create" class="btn btn-primary">
+    <div class="form-group">
+        <label>Score:
+            <input type = "number" th:field="${tapGoal.tap.score}" class="form-control">
+        </label>
+        <p class="error" th:errors="${tapGoal.tap.score}"></p>
+    </div>
+    <input type="submit" value="Tap In" class="btn btn-primary">
 </form>
 
 </body>

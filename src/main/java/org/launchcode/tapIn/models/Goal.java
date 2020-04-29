@@ -1,9 +1,6 @@
 package org.launchcode.tapIn.models;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +19,8 @@ public class Goal extends AbstractEntity{
     @Min(1)
     private Integer scoreStart;
 
-    @ElementCollection
-    private final List<Integer> taps = new ArrayList<>();
+    @ManyToMany
+    private final List<Tap> taps = new ArrayList<>();
 
     public Goal(@NotBlank(message = "Date is required") String date, @NotBlank(message = "Name is required") @Size(min = 3, max = 100, message = "Goal must be at least 3 characters long") String name, @Max(10) @Min(1) Integer scoreStart) {
         this.date = date;
@@ -57,10 +54,10 @@ public class Goal extends AbstractEntity{
         this.scoreStart = scoreStart;
     }
 
-    public List<Integer> getTaps() {
+    public List<Tap> getTaps() {
         return taps;
     }
 
-    public void addTap(Integer tap) {this.taps.add(tap);}
+    public void addTap(Tap tap) {this.taps.add(tap);}
 }
 

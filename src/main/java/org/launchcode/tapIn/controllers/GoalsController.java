@@ -1,7 +1,10 @@
 package org.launchcode.tapIn.controllers;
 
 import org.launchcode.tapIn.data.GoalsRepository;
+import org.launchcode.tapIn.data.TapRepository;
 import org.launchcode.tapIn.models.Goal;
+import org.launchcode.tapIn.models.Tap;
+import org.launchcode.tapIn.models.dto.TapGoalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,9 @@ public class GoalsController {
 
     @Autowired
     private GoalsRepository goalsRepository;
+
+    @Autowired
+    private TapRepository tapRepository;
 
     @GetMapping
     public String displayAllGoals(Model model){
@@ -62,16 +68,22 @@ public class GoalsController {
     public String displayTapInForm (@RequestParam Integer goalId, Model model){
         Optional<Goal> result = goalsRepository.findById(goalId);
         Goal goal = result.get();
-        model.addAttribute("goal", goal);
+        TapGoalDTO tapGoal = new TapGoalDTO();
+        tapGoal.setGoal(goal);
+        model.addAttribute("tapGoal", tapGoal);
         return "tapIn/create";
     }
 
     @PostMapping("tapIn")
-    public String processTapInForm(@RequestParam Integer goalId, @RequestParam Integer tap){
-        Optional<Goal> result = goalsRepository.findById(goalId);
-        Goal goal = result.get();
+    public String processTapInForm(@ModelAttribute @Valid TapGoalDTO tapGoal,
+                                   Errors errors,
+                                   Model model){
+        Goal goal = tapGoal.getGoal();
+        Tap tap = tapGoal.getTap();
         goal.addTap(tap);
+        tapRepository.save(tap);
         goalsRepository.save(goal);
-        return "redirect:";
+        return "redirect:/goals";
     }
+
 }
