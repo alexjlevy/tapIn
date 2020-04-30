@@ -49,4 +49,5 @@ public class Tap extends AbstractEntity {
     public List<Goal> getGoals() {
         return goals;
     }
+
 }

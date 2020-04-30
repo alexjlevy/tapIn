@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Goal extends AbstractEntity{
+public class Goal extends AbstractEntity {
 
     @NotBlank(message = "Date is required")
     private String date;
@@ -28,7 +28,8 @@ public class Goal extends AbstractEntity{
         this.scoreStart = scoreStart;
     }
 
-    public Goal () {}
+    public Goal() {
+    }
 
     public String getDate() {
         return date;
@@ -58,6 +59,21 @@ public class Goal extends AbstractEntity{
         return taps;
     }
 
-    public void addTap(Tap tap) {this.taps.add(tap);}
-}
+    public void addTap(Tap tap) {
+        this.taps.add(tap);
+    }
 
+    public String getAverageScore(Goal goal) {
+        if (!goal.getTaps().isEmpty()) {
+            List<Tap> taps = goal.getTaps();
+            int sum = 0;
+            for (Tap tap : taps) {
+                sum += tap.getScore();
+            }
+             int a = sum / taps.size();
+            return String.valueOf(a);
+        } else {
+            return "N/A";
+        }
+    }
+}

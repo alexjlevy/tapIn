@@ -9,12 +9,14 @@
             <tr>
                 <th>Goals</th>
                 <th>Initial Score</th>
+                <th>Average Tap</th>
                 <th>Date Added</th>
             </tr>
         </thead>
             <tr th:each="goal : ${goals}">
-                <td><a th:text="${goal.name}" th:href="'/goals/tapIn?goalId=' + ${goal.id}"></a></td>
+                <td><a th:text="${goal.name}" th:href="'/tapIn?goalId=' + ${goal.id}"></a></td>
                 <td th:text="${goal.scoreStart}"></td>
+                <td th:text="${goal.getAverageScore(goal)}"></td>
                 <td th:text="${goal.date}"></td>
             </tr>
     </table>
