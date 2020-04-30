@@ -14,9 +14,9 @@
             </tr>
         </thead>
             <tr th:each="goal : ${goals}">
-                <td><a th:text="${goal.name}" th:href="'/tapIn?goalId=' + ${goal.id}"></a></td>
+                <td><a th:text="${goal.name}" th:href="'/tapIn/create?goalId=' + ${goal.id}"></a></td>
                 <td th:text="${goal.scoreStart}"></td>
-                <td th:text="${goal.getAverageScore(goal)}"></td>
+                <td><a th:text="${goal.getAverageScore(goal)}" th:href="'/goals/taps?goalId=' + ${goal.id}"></td>
                 <td th:text="${goal.date}"></td>
             </tr>
     </table>

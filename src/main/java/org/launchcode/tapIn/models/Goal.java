@@ -2,6 +2,7 @@ package org.launchcode.tapIn.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,16 +65,19 @@ public class Goal extends AbstractEntity {
     }
 
     public String getAverageScore(Goal goal) {
+        DecimalFormat df = new DecimalFormat(".##");
         if (!goal.getTaps().isEmpty()) {
             List<Tap> taps = goal.getTaps();
-            int sum = 0;
+            double sum = 0;
             for (Tap tap : taps) {
                 sum += tap.getScore();
             }
-             int a = sum / taps.size();
-            return String.valueOf(a);
+             double a = sum / taps.size();
+            return String.valueOf(df.format(a));
         } else {
             return "N/A";
         }
     }
+
+
 }

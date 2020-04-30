@@ -25,6 +25,13 @@ public class TapController {
     private TapRepository tapRepository;
 
     @GetMapping
+    public String displayAllTaps(Model model){
+        model.addAttribute("goals", goalsRepository.findAll());
+        model.addAttribute("taps", tapRepository.findAll());
+        return "tapIn/index";
+    }
+
+    @GetMapping("create")
     public String displayTapInForm (@RequestParam Integer goalId, Model model){
         Optional<Goal> result = goalsRepository.findById(goalId);
         Goal goal = result.get();
@@ -34,7 +41,7 @@ public class TapController {
         return "tapIn/create";
     }
 
-    @PostMapping
+    @PostMapping("create")
     public String processTapInForm(@ModelAttribute @Valid TapGoalDTO tapGoal,
                                    Errors errors,
                                    Model model){

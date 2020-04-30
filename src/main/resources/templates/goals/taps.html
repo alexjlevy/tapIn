@@ -3,20 +3,24 @@
 <head th:replace="fragments :: head"></head>
 <body class="container">
 <header th:replace="fragments :: header"></header>
-<div th:if="${!goals.isEmpty()}">
+<div th:if="${!taps.isEmpty()}">
     <table class="table table-hover">
         <thead>
         <tr>
             <th>Date</th>
-            <th>Goal</th>
-            <th>Tap</th>
+            <th>Score</th>
         </tr>
         </thead>
         <tr th:each="tap : ${taps}">
             <td th:text="${tap.date}"></td>
-            <td> <a th:text="${tap.getGoal(tap).getName()}" th:href ="'/goals/taps?goalId=' + ${tap.getGoal(tap).getId()}"></td>
             <td th:text="${tap.score}"></td>
         </tr>
+        <thead>
+        <tr>
+            <th>Average:</th>
+            <th th:text="${goal.getAverageScore(goal)}"></th>
+        </tr>
+        </thead>
     </table>
 </div>
 

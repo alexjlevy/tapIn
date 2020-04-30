@@ -50,4 +50,10 @@ public class Tap extends AbstractEntity {
         return goals;
     }
 
+    public Goal getGoal(Tap tap){
+        List<Goal> goals = tap.getGoals();
+        return goals.get(0);
+    }
+
+
 }
